@@ -55,7 +55,7 @@ inline static void fancy_write(i2c_inst_t *i2c, uint8_t addr, const uint8_t *src
 
 inline static void ssd1306_write(ssd1306_t *p, uint8_t val) {
     uint8_t d[2]= {0x00, val};
-    fancy_write(p->i2c_i, p->address, d, 2, "ssd1306_write");
+    i2c_write_blocking(p->i2c_i, p->address, d, 2, false);
 }
 
 bool ssd1306_init(ssd1306_t *p, uint16_t width, uint16_t height, uint8_t address, i2c_inst_t *i2c_instance) {
@@ -340,5 +340,5 @@ void ssd1306_show(ssd1306_t *p) {
 
     *(p->buffer-1)=0x40;
 
-    fancy_write(p->i2c_i, p->address, p->buffer-1, p->bufsize+1, "ssd1306_show");
+    i2c_write_blocking(p->i2c_i, p->address, p->buffer-1, p->bufsize+1, false);
 }
