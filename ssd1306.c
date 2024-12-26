@@ -48,7 +48,7 @@ inline static void fancy_write(i2c_inst_t *i2c, uint8_t addr, const uint8_t *src
         printf("[%s] timeout!\n", name);
         break;
     default:
-        //printf("[%s] wrote successfully %lu bytes!\n", name, len);
+        printf("[%s] wrote successfully %lu bytes!\n", name, len);
         break;
     }
 }
@@ -157,6 +157,31 @@ void ssd1306_clear_pixel(ssd1306_t *p, uint32_t x, uint32_t y) {
     if(x>=p->width || y>=p->height) return;
 
     p->buffer[x+p->width*(y>>3)]&=~(0x1<<(y&0x07));
+}
+
+/**
+	@brief reset display
+
+	@param p : instance of display
+*/
+void ssd1306_reset(ssd1306_t *p) {
+    uint8_t payload[] = {
+        SET_COMMAND_MODE,
+        SET_DISP,
+        SET_ENTIRE_ON,
+        SET_DISP_CLK_DIV,
+        0x80,
+        SET_CHARGE_PUMP,
+        0x14,
+        SET_NORM_INV,
+        SET_DISP_OFFSET,
+        0x00,
+        SET_DISP_START_LINE,
+        SET_DISP_ON
+    };
+
+    for (size_t i = 0; i < sizeof(payload); ++i)
+        ssd1306_write(p, payload[i]);
 }
 
 void ssd1306_draw_pixel(ssd1306_t *p, uint32_t x, uint32_t y) {

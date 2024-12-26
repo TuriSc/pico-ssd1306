@@ -37,10 +37,12 @@ SOFTWARE.
 *	@brief defines commands used in ssd1306
 */
 typedef enum {
+    SET_COMMAND_MODE = 0x00,
     SET_CONTRAST = 0x81,
     SET_ENTIRE_ON = 0xA4,
     SET_NORM_INV = 0xA6,
     SET_DISP = 0xAE,
+    SET_DISP_ON = 0xAF,
     SET_MEM_ADDR = 0x20,
     SET_COL_ADDR = 0x21,
     SET_PAGE_ADDR = 0x22,
@@ -73,11 +75,11 @@ typedef struct {
 /**
 *	@brief initialize display
 *
-*	@param[in] p : pointer to instance of ssd1306_t
-*	@param[in] width : width of display
-*	@param[in] height : heigth of display
-*	@param[in] address : i2c address of display
-*	@param[in] i2c_instance : instance of i2c connection
+*	@param p : pointer to instance of ssd1306_t
+*	@param width : width of display
+*	@param height : heigth of display
+*	@param address : i2c address of display
+*	@param i2c_instance : instance of i2c connection
 *	
 * 	@return bool.
 *	@retval true for Success
@@ -88,7 +90,7 @@ bool ssd1306_init(ssd1306_t *p, uint16_t width, uint16_t height, uint8_t address
 /**
 *	@brief deinitialize display
 *
-*	@param[in] p : instance of display
+*	@param p : instance of display
 *
 */
 void ssd1306_deinit(ssd1306_t *p);
@@ -96,7 +98,7 @@ void ssd1306_deinit(ssd1306_t *p);
 /**
 *	@brief turn off display
 *
-*	@param[in] p : instance of display
+*	@param p : instance of display
 *
 */
 void ssd1306_poweroff(ssd1306_t *p);
@@ -104,7 +106,7 @@ void ssd1306_poweroff(ssd1306_t *p);
 /**
 	@brief turn on display
 
-	@param[in] p : instance of display
+	@param p : instance of display
 
 */
 void ssd1306_poweron(ssd1306_t *p);
@@ -112,8 +114,8 @@ void ssd1306_poweron(ssd1306_t *p);
 /**
 	@brief set contrast of display
 
-	@param[in] p : instance of display
-	@param[in] val : contrast
+	@param p : instance of display
+	@param val : contrast
 
 */
 void ssd1306_contrast(ssd1306_t *p, uint8_t val);
@@ -121,8 +123,8 @@ void ssd1306_contrast(ssd1306_t *p, uint8_t val);
 /**
 	@brief set invert display
 
-	@param[in] p : instance of display
-	@param[in] inv : inv==0: disable inverting, inv!=0: invert
+	@param p : instance of display
+	@param inv : inv==0: disable inverting, inv!=0: invert
 
 */
 void ssd1306_invert(ssd1306_t *p, uint8_t inv);
@@ -130,8 +132,8 @@ void ssd1306_invert(ssd1306_t *p, uint8_t inv);
 /**
 	@brief set vertical flip of display
 
-	@param[in] p : instance of display
-	@param[in] val : val==0: disable flip, val!=0: flip
+	@param p : instance of display
+	@param val : val==0: disable flip, val!=0: flip
 
 */
 void ssd1306_vflip(ssd1306_t *p, uint8_t val);
@@ -139,8 +141,8 @@ void ssd1306_vflip(ssd1306_t *p, uint8_t val);
 /**
 	@brief set horizontal flop of display
 
-	@param[in] p : instance of display
-	@param[in] val : val==0: disable flop, val!=0: flop
+	@param p : instance of display
+	@param val : val==0: disable flop, val!=0: flop
 
 */
 void ssd1306_hflip(ssd1306_t *p, uint8_t val);
@@ -148,8 +150,8 @@ void ssd1306_hflip(ssd1306_t *p, uint8_t val);
 /**
 	@brief set rotation of display
 
-	@param[in] p : instance of display
-	@param[in] val : val==0: disable rotation, val!=0: rotate
+	@param p : instance of display
+	@param val : val==0: disable rotation, val!=0: rotate
 
 */
 void ssd1306_rotate(ssd1306_t *p, uint8_t val);
@@ -157,7 +159,7 @@ void ssd1306_rotate(ssd1306_t *p, uint8_t val);
 /**
 	@brief display buffer, should be called on change
 
-	@param[in] p : instance of display
+	@param p : instance of display
 
 */
 void ssd1306_show(ssd1306_t *p);
@@ -165,7 +167,7 @@ void ssd1306_show(ssd1306_t *p);
 /**
 	@brief clear display buffer
 
-	@param[in] p : instance of display
+	@param p : instance of display
 
 */
 void ssd1306_clear(ssd1306_t *p);
@@ -173,128 +175,135 @@ void ssd1306_clear(ssd1306_t *p);
 /**
 	@brief clear pixel on buffer
 
-	@param[in] p : instance of display
-	@param[in] x : x position
-	@param[in] y : y position
+	@param p : instance of display
+	@param x : x position
+	@param y : y position
 */
 void ssd1306_clear_pixel(ssd1306_t *p, uint32_t x, uint32_t y);
 
 /**
+	@brief reset display
+
+	@param p : instance of display
+*/
+void ssd1306_reset(ssd1306_t *p);
+
+/**
 	@brief draw pixel on buffer
 
-	@param[in] p : instance of display
-	@param[in] x : x position
-	@param[in] y : y position
+	@param p : instance of display
+	@param x : x position
+	@param y : y position
 */
 void ssd1306_draw_pixel(ssd1306_t *p, uint32_t x, uint32_t y);
 
 /**
 	@brief draw line on buffer
 
-	@param[in] p : instance of display
-	@param[in] x1 : x position of starting point
-	@param[in] y1 : y position of starting point
-	@param[in] x2 : x position of end point
-	@param[in] y2 : y position of end point
+	@param p : instance of display
+	@param x1 : x position of starting point
+	@param y1 : y position of starting point
+	@param x2 : x position of end point
+	@param y2 : y position of end point
 */
 void ssd1306_draw_line(ssd1306_t *p, int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 
 /**
 	@brief clear square at given position with given size
 
-	@param[in] p : instance of display
-	@param[in] x : x position of starting point
-	@param[in] y : y position of starting point
-	@param[in] width : width of square
-	@param[in] height : height of square
+	@param p : instance of display
+	@param x : x position of starting point
+	@param y : y position of starting point
+	@param width : width of square
+	@param height : height of square
 */
 void ssd1306_clear_square(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 
 /**
 	@brief draw filled square at given position with given size
 
-	@param[in] p : instance of display
-	@param[in] x : x position of starting point
-	@param[in] y : y position of starting point
-	@param[in] width : width of square
-	@param[in] height : height of square
+	@param p : instance of display
+	@param x : x position of starting point
+	@param y : y position of starting point
+	@param width : width of square
+	@param height : height of square
 */
 void ssd1306_draw_square(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 
 /**
 	@brief draw empty square at given position with given size
 
-	@param[in] p : instance of display
-	@param[in] x : x position of starting point
-	@param[in] y : y position of starting point
-	@param[in] width : width of square
-	@param[in] height : height of square
+	@param p : instance of display
+	@param x : x position of starting point
+	@param y : y position of starting point
+	@param width : width of square
+	@param height : height of square
 */
 void ssd1306_draw_empty_square(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t width, uint32_t height);
 
 /**
 	@brief draw monochrome bitmap with offset
 
-	@param[in] p : instance of display
-	@param[in] data : image data (whole file)
-	@param[in] size : size of image data in bytes
-	@param[in] x_offset : offset of horizontal coordinate
-	@param[in] y_offset : offset of vertical coordinate
+	@param p : instance of display
+	@param data : image data (whole file)
+	@param size : size of image data in bytes
+	@param x_offset : offset of horizontal coordinate
+	@param y_offset : offset of vertical coordinate
 */
 void ssd1306_bmp_show_image_with_offset(ssd1306_t *p, const uint8_t *data, const long size, uint32_t x_offset, uint32_t y_offset);
 
 /**
 	@brief draw monochrome bitmap
 
-	@param[in] p : instance of display
-	@param[in] data : image data (whole file)
-	@param[in] size : size of image data in bytes
+	@param p : instance of display
+	@param data : image data (whole file)
+	@param size : size of image data in bytes
 */
 void ssd1306_bmp_show_image(ssd1306_t *p, const uint8_t *data, const long size);
 
 /**
 	@brief draw char with given font
 
-	@param[in] p : instance of display
-	@param[in] x : x starting position of char
-	@param[in] y : y starting position of char
-	@param[in] scale : scale font to n times of original size (default should be 1)
-	@param[in] font : pointer to font
-	@param[in] c : character to draw
+	@param p : instance of display
+	@param x : x starting position of char
+	@param y : y starting position of char
+	@param scale : scale font to n times of original size (default should be 1)
+	@param font : pointer to font
+	@param c : character to draw
 */
 void ssd1306_draw_char_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, char c);
 
 /**
 	@brief draw char with builtin font
 
-	@param[in] p : instance of display
-	@param[in] x : x starting position of char
-	@param[in] y : y starting position of char
-	@param[in] scale : scale font to n times of original size (default should be 1)
-	@param[in] c : character to draw
+	@param p : instance of display
+	@param x : x starting position of char
+	@param y : y starting position of char
+	@param scale : scale font to n times of original size (default should be 1)
+	@param c : character to draw
 */
 void ssd1306_draw_char(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, char c);
 
 /**
 	@brief draw string with given font
 
-	@param[in] p : instance of display
-	@param[in] x : x starting position of text
-	@param[in] y : y starting position of text
-	@param[in] scale : scale font to n times of original size (default should be 1)
-	@param[in] font : pointer to font
-	@param[in] s : text to draw
+	@param p : instance of display
+	@param x : x starting position of text
+	@param y : y starting position of text
+	@param scale : scale font to n times of original size (default should be 1)
+	@param font : pointer to font
+	@param s : text to draw
 */
 void ssd1306_draw_string_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, const char *s );
 
 /**
 	@brief draw string with builtin font
 
-	@param[in] p : instance of display
-	@param[in] x : x starting position of text
-	@param[in] y : y starting position of text
-	@param[in] scale : scale font to n times of original size (default should be 1)
-	@param[in] s : text to draw
+	@param p : instance of display
+	@param x : x starting position of text
+	@param y : y starting position of text
+	@param scale : scale font to n times of original size (default should be 1)
+	@param s : text to draw
 */
 void ssd1306_draw_string(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const char *s);
 
