@@ -41,14 +41,15 @@ typedef enum {
 *	@brief holds the configuration
 */
 typedef struct {
-    uint8_t width; 		/**< width of display */
+    uint8_t width; 	/**< width of display */
     uint8_t height; 	/**< height of display */
-    uint8_t pages;		/**< stores pages of display (calculated on initialization*/
+    uint8_t pages;	/**< stores pages of display (calculated on initialization*/
     uint8_t address; 	/**< i2c address of display*/
     i2c_inst_t *i2c_i; 	/**< i2c connection instance */
     bool external_vcc; 	/**< whether display uses external vcc */ 
     uint8_t *buffer;	/**< display buffer */
-    size_t bufsize;		/**< buffer size */
+    size_t bufsize;	/**< buffer size */
+    uint8_t rotation;	/**< display rotation */
 } ssd1306_t;
 
 /**
@@ -127,13 +128,23 @@ void ssd1306_vflip(ssd1306_t *p, uint8_t val);
 void ssd1306_hflip(ssd1306_t *p, uint8_t val);
 
 /**
-	@brief set rotation of display
+	@brief Outdated: set hardware rotation of display to 180°
 
 	@param p : instance of display
 	@param val : val==0: disable rotation, val!=0: rotate
+	@note Included for backwards support. Use ssd1306_set_rotation instead
 
 */
 void ssd1306_rotate(ssd1306_t *p, uint8_t val);
+
+/**
+	@brief set display rotation
+
+	@param p : instance of display
+	@param rotation : 0: no rotation, 1: 90°, 2: 180°, 3: 270°
+
+*/
+void ssd1306_set_rotation(ssd1306_t *p, uint8_t rotation);
 
 /**
 	@brief display buffer, should be called on change

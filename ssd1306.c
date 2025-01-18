@@ -29,7 +29,7 @@ inline static void swap(int32_t *a, int32_t *b) {
 }
 
 /**
- * @brief writes data to an I2C device with error handling
+ * @brief write data to an I2C device with error handling
  *
  * @param i2c : pointer to the I2C instance
  * @param addr : address of the I2C device
@@ -208,15 +208,31 @@ inline void ssd1306_hflip(ssd1306_t *p, uint8_t val) {
 }
 
 /**
-	@brief set rotation of display
+	@brief Outdated: set hardware rotation of display to 180°
 
 	@param p : instance of display
 	@param val : val==0: disable rotation, val!=0: rotate
+	@note Included for backwards support. Use ssd1306_set_rotation instead
 
 */
 inline void ssd1306_rotate(ssd1306_t *p, uint8_t val) {
     ssd1306_vflip(p, val);
     ssd1306_hflip(p, val);
+}
+
+/**
+	@brief set display rotation
+
+	@param p : instance of display
+	@param rotation : 0: no rotation, 1: 90°, 2: 180°, 3: 270°
+
+*/
+inline void ssd1306_set_rotation(ssd1306_t *p, uint8_t rotation) {
+    if(rotation > 3) {
+        return;
+    }
+
+    p->rotation = rotation;
 }
 
 /**
@@ -237,9 +253,29 @@ inline void ssd1306_clear(ssd1306_t *p) {
 	@param y : y position
 */
 void ssd1306_clear_pixel(ssd1306_t *p, uint32_t x, uint32_t y) {
-    if(x>=p->width || y>=p->height) return;
+    uint32_t buffer_x, buffer_y;
+    switch (p->rotation) {
+        case 0:
+            buffer_x = x;
+            buffer_y = y;
+            break;
+        case 1:
+            buffer_x = p->height - 1 - y + (p->width) / 2;
+            buffer_y = x;
+            break;
+        case 2:
+            buffer_x = p->width - 1 - x;
+            buffer_y = p->height - 1 - y;
+            break;
+        case 3:
+            buffer_x = y;
+            buffer_y = p->height - 1 - x;
+            break;
+    }
 
-    p->buffer[x+p->width*(y>>3)]&=~(0x1<<(y&0x07));
+    if (buffer_x < p->width && buffer_y < p->height) {
+        p->buffer[buffer_x + p->width * (buffer_y >> 3)] &= ~(0x1 << (buffer_y & 0x07));
+    }
 }
 
 /**
@@ -275,9 +311,29 @@ void ssd1306_reset(ssd1306_t *p) {
 	@param y : y position
 */
 void ssd1306_draw_pixel(ssd1306_t *p, uint32_t x, uint32_t y) {
-    if(x>=p->width || y>=p->height) return;
+    uint32_t buffer_x, buffer_y;
+    switch (p->rotation) {
+        case 0:
+            buffer_x = x;
+            buffer_y = y;
+            break;
+        case 1:
+            buffer_x = p->height - 1 - y + p->width / 2;
+            buffer_y = x;
+            break;
+        case 2:
+            buffer_x = p->width - 1 - x;
+            buffer_y = p->height - 1 - y;
+            break;
+        case 3:
+            buffer_x = y;
+            buffer_y = p->height - 1 - x;
+            break;
+    }
 
-    p->buffer[x+p->width*(y>>3)]|=0x1<<(y&0x07); // y>>3==y/8 && y&0x7==y%8
+    if (buffer_x < p->width && buffer_y < p->height) {
+        p->buffer[buffer_x + p->width * (buffer_y >> 3)] |= 0x1 << (buffer_y & 0x07);
+    }
 }
 
 /**
