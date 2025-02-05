@@ -414,6 +414,48 @@ void ssd1306_draw_empty_square(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t wi
 }
 
 /**
+	@brief clear filled circle at given position with given radius
+
+	@param p : instance of display
+	@param x : x position of the center of the circle
+	@param y : y position of the center of the circle
+	@param r : radius of the circle
+*/
+void ssd1306_clear_circle(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t r) {
+    for (uint32_t i = 0; i < r; ++i) {
+        for (uint32_t j = 0; j < r; ++j) {
+            if ((i * i + j * j) <= (r * r)) {
+                ssd1306_clear_pixel(p, x + i, y + j);
+                ssd1306_clear_pixel(p, x + i, y - j);
+                ssd1306_clear_pixel(p, x - i, y + j);
+                ssd1306_clear_pixel(p, x - i, y - j);
+            }
+        }
+    }
+}
+
+/**
+	@brief draw filled circle at given position with given radius
+
+	@param p : instance of display
+	@param x : x position of the center of the circle
+	@param y : y position of the center of the circle
+	@param r : radius of the circle
+*/
+void ssd1306_draw_circle(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t r) {
+    for (uint32_t i = 0; i < r; ++i) {
+        for (uint32_t j = 0; j < r; ++j) {
+            if ((i * i + j * j) <= (r * r)) {
+                ssd1306_draw_pixel(p, x + i, y + j);
+                ssd1306_draw_pixel(p, x + i, y - j);
+                ssd1306_draw_pixel(p, x - i, y + j);
+                ssd1306_draw_pixel(p, x - i, y - j);
+            }
+        }
+    }
+}
+
+/**
 	@brief draw char with given font
 
 	@param p : instance of display
