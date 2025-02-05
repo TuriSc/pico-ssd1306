@@ -1,0 +1,796 @@
+\hypertarget{ssd1306_8h}{}\doxysection{ssd1306.\+h File Reference}
+\label{ssd1306_8h}\index{ssd1306.h@{ssd1306.h}}
+
+
+SSD1306 OLED display driver.  
+
+
+{\ttfamily \#include $<$pico/stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$hardware/i2c.\+h$>$}\newline
+Include dependency graph for ssd1306.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{ssd1306_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{ssd1306_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em holds the configuration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ssd1306_8h_ad670652f20b55952a5ee9999a8e6b909}\label{ssd1306_8h_ad670652f20b55952a5ee9999a8e6b909}} 
+enum \mbox{\hyperlink{ssd1306_8h_ad670652f20b55952a5ee9999a8e6b909}{ssd1306\+\_\+command\+\_\+t}} \{ \newline
+{\bfseries SET\+\_\+\+COMMAND\+\_\+\+MODE} = 0x00
+, {\bfseries SET\+\_\+\+CONTRAST} = 0x81
+, {\bfseries SET\+\_\+\+ENTIRE\+\_\+\+ON} = 0x\+A4
+, {\bfseries SET\+\_\+\+NORM\+\_\+\+INV} = 0x\+A6
+, \newline
+{\bfseries SET\+\_\+\+DISP} = 0x\+AE
+, {\bfseries SET\+\_\+\+DISP\+\_\+\+ON} = 0x\+AF
+, {\bfseries SET\+\_\+\+MEM\+\_\+\+ADDR} = 0x20
+, {\bfseries SET\+\_\+\+COL\+\_\+\+ADDR} = 0x21
+, \newline
+{\bfseries SET\+\_\+\+PAGE\+\_\+\+ADDR} = 0x22
+, {\bfseries SET\+\_\+\+DISP\+\_\+\+START\+\_\+\+LINE} = 0x40
+, {\bfseries SET\+\_\+\+SEG\+\_\+\+REMAP} = 0x\+A0
+, {\bfseries SET\+\_\+\+MUX\+\_\+\+RATIO} = 0x\+A8
+, \newline
+{\bfseries SET\+\_\+\+COM\+\_\+\+OUT\+\_\+\+DIR} = 0x\+C0
+, {\bfseries SET\+\_\+\+DISP\+\_\+\+OFFSET} = 0x\+D3
+, {\bfseries SET\+\_\+\+COM\+\_\+\+PIN\+\_\+\+CFG} = 0x\+DA
+, {\bfseries SET\+\_\+\+DISP\+\_\+\+CLK\+\_\+\+DIV} = 0x\+D5
+, \newline
+{\bfseries SET\+\_\+\+PRECHARGE} = 0x\+D9
+, {\bfseries SET\+\_\+\+VCOM\+\_\+\+DESEL} = 0x\+DB
+, {\bfseries SET\+\_\+\+CHARGE\+\_\+\+PUMP} = 0x8D
+ \}
+\begin{DoxyCompactList}\small\item\em defines commands used in ssd1306 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{ssd1306_8h_a56995249d6623b978ed8e943b4f156be}{ssd1306\+\_\+init}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint16\+\_\+t width, uint16\+\_\+t height, uint8\+\_\+t address, i2c\+\_\+inst\+\_\+t $\ast$i2c\+\_\+instance)
+\begin{DoxyCompactList}\small\item\em initialize display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a8d7146d350e392ebc2556280d0fde1ca}{ssd1306\+\_\+deinit}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em deinitialize display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_ab6b0fb58a6636463ec76c93c05e26e02}{ssd1306\+\_\+poweroff}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em turn off display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a19eee3288fe5dc84fc95ff3a24d50d6a}{ssd1306\+\_\+poweron}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em turn on display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a9ebe6c7807f3fd8f0eb006769bedbbac}{ssd1306\+\_\+contrast}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em set contrast of display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a2332fdd392f3e002a5f50e3c204c0e6a}{ssd1306\+\_\+invert}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t inv)
+\begin{DoxyCompactList}\small\item\em set invert display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_ac6a2f7faaf517e96cff3c47d8986144d}{ssd1306\+\_\+vflip}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em set vertical flip of display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_af478370e8f3a941ac5d5d5dc8b4a11b9}{ssd1306\+\_\+hflip}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em set horizontal flop of display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a5f7f4e389880f412318683f62cebeb2c}{ssd1306\+\_\+rotate}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Outdated\+: set hardware rotation of display to 180° \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a2ccda198959aea3da9459d1cb38c8c26}{ssd1306\+\_\+set\+\_\+rotation}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint8\+\_\+t rotation)
+\begin{DoxyCompactList}\small\item\em set display rotation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_afc04cfe30a15dfd3cc0b55ae2a2f57af}{ssd1306\+\_\+show}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em display buffer, should be called on change \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a82fc78675d097e37985dfa8c6672dd58}{ssd1306\+\_\+clear}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em clear display buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_ac328fa69f7ed547cb1cd62f9e65e8067}{ssd1306\+\_\+clear\+\_\+pixel}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em clear pixel on buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_aaefa7a41dc6dafe032eefc5b448e8137}{ssd1306\+\_\+reset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em reset display \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a7c875fba9869eaa52e27cf325da57147}{ssd1306\+\_\+draw\+\_\+pixel}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em draw pixel on buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a61855e5afa6908a4abda2336dfc6cefc}{ssd1306\+\_\+draw\+\_\+line}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, int32\+\_\+t x1, int32\+\_\+t y1, int32\+\_\+t x2, int32\+\_\+t y2)
+\begin{DoxyCompactList}\small\item\em draw line on buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_abe48d45d9ddeee6d86624f2d98e6fa99}{ssd1306\+\_\+clear\+\_\+square}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em clear square at given position with given size \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a77731d3dfec84511f7b1b8205cc764c3}{ssd1306\+\_\+draw\+\_\+square}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em draw filled square at given position with given size \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a4e33dec03c4741e2771987b20f026ebf}{ssd1306\+\_\+draw\+\_\+empty\+\_\+square}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em draw empty square at given position with given size \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a5cefac323181b2b693df9e6f043e88c6}{ssd1306\+\_\+clear\+\_\+circle}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t r)
+\begin{DoxyCompactList}\small\item\em clear filled circle at given position with given radius \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a6610dd3b44dfb21466e4c1db173c4b8c}{ssd1306\+\_\+draw\+\_\+circle}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t r)
+\begin{DoxyCompactList}\small\item\em draw filled circle at given position with given radius \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a1624a5ea20392d5614b84094e94160b0}{ssd1306\+\_\+bmp\+\_\+show\+\_\+image\+\_\+with\+\_\+offset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, const uint8\+\_\+t $\ast$data, const long size, uint32\+\_\+t x\+\_\+offset, uint32\+\_\+t y\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em draw monochrome bitmap with offset \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a89d1f4edb34d5860df01a62512cc3949}{ssd1306\+\_\+bmp\+\_\+show\+\_\+image}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, const uint8\+\_\+t $\ast$data, const long size)
+\begin{DoxyCompactList}\small\item\em draw monochrome bitmap \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_aacdc1699e00e5649149ccf525d84ed26}{ssd1306\+\_\+clear\+\_\+char\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, char c)
+\begin{DoxyCompactList}\small\item\em clear char with given font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a48309e637d7621f73446b37d8728e085}{ssd1306\+\_\+draw\+\_\+char\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, char c)
+\begin{DoxyCompactList}\small\item\em draw char with given font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a3f47f38e480f603434915f39f8428970}{ssd1306\+\_\+clear\+\_\+char}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, char c)
+\begin{DoxyCompactList}\small\item\em clear char with builtin font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a6de844e85019c62e2b094e5598bd18df}{ssd1306\+\_\+draw\+\_\+char}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, char c)
+\begin{DoxyCompactList}\small\item\em draw char with builtin font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a1154ffb582d20072f65a0fb141f4a8dc}{ssd1306\+\_\+clear\+\_\+string\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em clear string with given font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_ad7aa75a6430ec1c501d233b3aaeafd8d}{ssd1306\+\_\+draw\+\_\+string\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em draw string with given font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_aa905064cfd33590aa9cbbfffde842a5a}{ssd1306\+\_\+clear\+\_\+string}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em clear string with builtin font \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8h_a4fa45ef8fd75cb3ff1b1c2378d064266}{ssd1306\+\_\+draw\+\_\+string}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em draw string with builtin font \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SSD1306 OLED display driver. 
+
+\begin{DoxyAuthor}{Author}
+David Schramm @contributor Turi Scandurra 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021 Simple driver for ssd1306 displays 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ssd1306_8h_a89d1f4edb34d5860df01a62512cc3949}\label{ssd1306_8h_a89d1f4edb34d5860df01a62512cc3949}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_bmp\_show\_image@{ssd1306\_bmp\_show\_image}}
+\index{ssd1306\_bmp\_show\_image@{ssd1306\_bmp\_show\_image}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_bmp\_show\_image()}{ssd1306\_bmp\_show\_image()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+bmp\+\_\+show\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{const uint8\+\_\+t $\ast$}]{data,  }\item[{const long}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+draw monochrome bitmap 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em data} & \+: image data (whole file) \\
+\hline
+{\em size} & \+: size of image data in bytes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a1624a5ea20392d5614b84094e94160b0}\label{ssd1306_8h_a1624a5ea20392d5614b84094e94160b0}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_bmp\_show\_image\_with\_offset@{ssd1306\_bmp\_show\_image\_with\_offset}}
+\index{ssd1306\_bmp\_show\_image\_with\_offset@{ssd1306\_bmp\_show\_image\_with\_offset}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_bmp\_show\_image\_with\_offset()}{ssd1306\_bmp\_show\_image\_with\_offset()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+bmp\+\_\+show\+\_\+image\+\_\+with\+\_\+offset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{const uint8\+\_\+t $\ast$}]{data,  }\item[{const long}]{size,  }\item[{uint32\+\_\+t}]{x\+\_\+offset,  }\item[{uint32\+\_\+t}]{y\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+draw monochrome bitmap with offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em data} & \+: image data (whole file) \\
+\hline
+{\em size} & \+: size of image data in bytes \\
+\hline
+{\em x\+\_\+offset} & \+: offset of horizontal coordinate \\
+\hline
+{\em y\+\_\+offset} & \+: offset of vertical coordinate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a82fc78675d097e37985dfa8c6672dd58}\label{ssd1306_8h_a82fc78675d097e37985dfa8c6672dd58}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear@{ssd1306\_clear}}
+\index{ssd1306\_clear@{ssd1306\_clear}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear()}{ssd1306\_clear()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+clear display buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a3f47f38e480f603434915f39f8428970}\label{ssd1306_8h_a3f47f38e480f603434915f39f8428970}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_char@{ssd1306\_clear\_char}}
+\index{ssd1306\_clear\_char@{ssd1306\_clear\_char}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_char()}{ssd1306\_clear\_char()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+clear char with builtin font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of char \\
+\hline
+{\em y} & \+: y starting position of char \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em c} & \+: character to clear \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_aacdc1699e00e5649149ccf525d84ed26}\label{ssd1306_8h_aacdc1699e00e5649149ccf525d84ed26}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_char\_with\_font@{ssd1306\_clear\_char\_with\_font}}
+\index{ssd1306\_clear\_char\_with\_font@{ssd1306\_clear\_char\_with\_font}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_char\_with\_font()}{ssd1306\_clear\_char\_with\_font()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+char\+\_\+with\+\_\+font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const uint8\+\_\+t $\ast$}]{font,  }\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+clear char with given font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of char \\
+\hline
+{\em y} & \+: y starting position of char \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em font} & \+: pointer to font \\
+\hline
+{\em c} & \+: character to clear \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a5cefac323181b2b693df9e6f043e88c6}\label{ssd1306_8h_a5cefac323181b2b693df9e6f043e88c6}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_circle@{ssd1306\_clear\_circle}}
+\index{ssd1306\_clear\_circle@{ssd1306\_clear\_circle}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_circle()}{ssd1306\_clear\_circle()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{r }\end{DoxyParamCaption})}
+
+
+
+clear filled circle at given position with given radius 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of the center of the circle \\
+\hline
+{\em y} & \+: y position of the center of the circle \\
+\hline
+{\em r} & \+: radius of the circle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_ac328fa69f7ed547cb1cd62f9e65e8067}\label{ssd1306_8h_ac328fa69f7ed547cb1cd62f9e65e8067}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_pixel@{ssd1306\_clear\_pixel}}
+\index{ssd1306\_clear\_pixel@{ssd1306\_clear\_pixel}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_pixel()}{ssd1306\_clear\_pixel()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+clear pixel on buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position \\
+\hline
+{\em y} & \+: y position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_abe48d45d9ddeee6d86624f2d98e6fa99}\label{ssd1306_8h_abe48d45d9ddeee6d86624f2d98e6fa99}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_square@{ssd1306\_clear\_square}}
+\index{ssd1306\_clear\_square@{ssd1306\_clear\_square}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_square()}{ssd1306\_clear\_square()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+square (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+clear square at given position with given size 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of starting point \\
+\hline
+{\em y} & \+: y position of starting point \\
+\hline
+{\em width} & \+: width of square \\
+\hline
+{\em height} & \+: height of square \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_aa905064cfd33590aa9cbbfffde842a5a}\label{ssd1306_8h_aa905064cfd33590aa9cbbfffde842a5a}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_string@{ssd1306\_clear\_string}}
+\index{ssd1306\_clear\_string@{ssd1306\_clear\_string}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_string()}{ssd1306\_clear\_string()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+clear string with builtin font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of text \\
+\hline
+{\em y} & \+: y starting position of text \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em s} & \+: text to clear \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a1154ffb582d20072f65a0fb141f4a8dc}\label{ssd1306_8h_a1154ffb582d20072f65a0fb141f4a8dc}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_clear\_string\_with\_font@{ssd1306\_clear\_string\_with\_font}}
+\index{ssd1306\_clear\_string\_with\_font@{ssd1306\_clear\_string\_with\_font}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_clear\_string\_with\_font()}{ssd1306\_clear\_string\_with\_font()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+clear\+\_\+string\+\_\+with\+\_\+font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const uint8\+\_\+t $\ast$}]{font,  }\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+clear string with given font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of text \\
+\hline
+{\em y} & \+: y starting position of text \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em font} & \+: pointer to font \\
+\hline
+{\em s} & \+: text to clear \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a9ebe6c7807f3fd8f0eb006769bedbbac}\label{ssd1306_8h_a9ebe6c7807f3fd8f0eb006769bedbbac}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_contrast@{ssd1306\_contrast}}
+\index{ssd1306\_contrast@{ssd1306\_contrast}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_contrast()}{ssd1306\_contrast()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+contrast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set contrast of display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em val} & \+: contrast \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a8d7146d350e392ebc2556280d0fde1ca}\label{ssd1306_8h_a8d7146d350e392ebc2556280d0fde1ca}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_deinit@{ssd1306\_deinit}}
+\index{ssd1306\_deinit@{ssd1306\_deinit}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_deinit()}{ssd1306\_deinit()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+deinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+deinitialize display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a6de844e85019c62e2b094e5598bd18df}\label{ssd1306_8h_a6de844e85019c62e2b094e5598bd18df}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_char@{ssd1306\_draw\_char}}
+\index{ssd1306\_draw\_char@{ssd1306\_draw\_char}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_char()}{ssd1306\_draw\_char()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+draw char with builtin font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of char \\
+\hline
+{\em y} & \+: y starting position of char \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em c} & \+: character to draw \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a48309e637d7621f73446b37d8728e085}\label{ssd1306_8h_a48309e637d7621f73446b37d8728e085}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_char\_with\_font@{ssd1306\_draw\_char\_with\_font}}
+\index{ssd1306\_draw\_char\_with\_font@{ssd1306\_draw\_char\_with\_font}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_char\_with\_font()}{ssd1306\_draw\_char\_with\_font()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+char\+\_\+with\+\_\+font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const uint8\+\_\+t $\ast$}]{font,  }\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+draw char with given font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of char \\
+\hline
+{\em y} & \+: y starting position of char \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em font} & \+: pointer to font \\
+\hline
+{\em c} & \+: character to draw \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a6610dd3b44dfb21466e4c1db173c4b8c}\label{ssd1306_8h_a6610dd3b44dfb21466e4c1db173c4b8c}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_circle@{ssd1306\_draw\_circle}}
+\index{ssd1306\_draw\_circle@{ssd1306\_draw\_circle}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_circle()}{ssd1306\_draw\_circle()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{r }\end{DoxyParamCaption})}
+
+
+
+draw filled circle at given position with given radius 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of the center of the circle \\
+\hline
+{\em y} & \+: y position of the center of the circle \\
+\hline
+{\em r} & \+: radius of the circle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a4e33dec03c4741e2771987b20f026ebf}\label{ssd1306_8h_a4e33dec03c4741e2771987b20f026ebf}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_empty\_square@{ssd1306\_draw\_empty\_square}}
+\index{ssd1306\_draw\_empty\_square@{ssd1306\_draw\_empty\_square}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_empty\_square()}{ssd1306\_draw\_empty\_square()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+empty\+\_\+square (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+draw empty square at given position with given size 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of starting point \\
+\hline
+{\em y} & \+: y position of starting point \\
+\hline
+{\em width} & \+: width of square \\
+\hline
+{\em height} & \+: height of square \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a61855e5afa6908a4abda2336dfc6cefc}\label{ssd1306_8h_a61855e5afa6908a4abda2336dfc6cefc}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_line@{ssd1306\_draw\_line}}
+\index{ssd1306\_draw\_line@{ssd1306\_draw\_line}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_line()}{ssd1306\_draw\_line()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{int32\+\_\+t}]{x1,  }\item[{int32\+\_\+t}]{y1,  }\item[{int32\+\_\+t}]{x2,  }\item[{int32\+\_\+t}]{y2 }\end{DoxyParamCaption})}
+
+
+
+draw line on buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x1} & \+: x position of starting point \\
+\hline
+{\em y1} & \+: y position of starting point \\
+\hline
+{\em x2} & \+: x position of end point \\
+\hline
+{\em y2} & \+: y position of end point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a7c875fba9869eaa52e27cf325da57147}\label{ssd1306_8h_a7c875fba9869eaa52e27cf325da57147}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_pixel@{ssd1306\_draw\_pixel}}
+\index{ssd1306\_draw\_pixel@{ssd1306\_draw\_pixel}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_pixel()}{ssd1306\_draw\_pixel()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+draw pixel on buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position \\
+\hline
+{\em y} & \+: y position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a77731d3dfec84511f7b1b8205cc764c3}\label{ssd1306_8h_a77731d3dfec84511f7b1b8205cc764c3}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_square@{ssd1306\_draw\_square}}
+\index{ssd1306\_draw\_square@{ssd1306\_draw\_square}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_square()}{ssd1306\_draw\_square()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+square (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+draw filled square at given position with given size 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of starting point \\
+\hline
+{\em y} & \+: y position of starting point \\
+\hline
+{\em width} & \+: width of square \\
+\hline
+{\em height} & \+: height of square \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a4fa45ef8fd75cb3ff1b1c2378d064266}\label{ssd1306_8h_a4fa45ef8fd75cb3ff1b1c2378d064266}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_string@{ssd1306\_draw\_string}}
+\index{ssd1306\_draw\_string@{ssd1306\_draw\_string}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_string()}{ssd1306\_draw\_string()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+draw string with builtin font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of text \\
+\hline
+{\em y} & \+: y starting position of text \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em s} & \+: text to draw \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_ad7aa75a6430ec1c501d233b3aaeafd8d}\label{ssd1306_8h_ad7aa75a6430ec1c501d233b3aaeafd8d}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_draw\_string\_with\_font@{ssd1306\_draw\_string\_with\_font}}
+\index{ssd1306\_draw\_string\_with\_font@{ssd1306\_draw\_string\_with\_font}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_string\_with\_font()}{ssd1306\_draw\_string\_with\_font()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+string\+\_\+with\+\_\+font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{scale,  }\item[{const uint8\+\_\+t $\ast$}]{font,  }\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+draw string with given font 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x starting position of text \\
+\hline
+{\em y} & \+: y starting position of text \\
+\hline
+{\em scale} & \+: scale font to n times of original size (default should be 1) \\
+\hline
+{\em font} & \+: pointer to font \\
+\hline
+{\em s} & \+: text to draw \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_af478370e8f3a941ac5d5d5dc8b4a11b9}\label{ssd1306_8h_af478370e8f3a941ac5d5d5dc8b4a11b9}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_hflip@{ssd1306\_hflip}}
+\index{ssd1306\_hflip@{ssd1306\_hflip}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_hflip()}{ssd1306\_hflip()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+hflip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set horizontal flop of display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em val} & \+: val==0\+: disable flop, val!=0\+: flop \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a56995249d6623b978ed8e943b4f156be}\label{ssd1306_8h_a56995249d6623b978ed8e943b4f156be}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_init@{ssd1306\_init}}
+\index{ssd1306\_init@{ssd1306\_init}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_init()}{ssd1306\_init()}}
+{\footnotesize\ttfamily bool ssd1306\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint8\+\_\+t}]{address,  }\item[{i2c\+\_\+inst\+\_\+t $\ast$}]{i2c\+\_\+instance }\end{DoxyParamCaption})}
+
+
+
+initialize display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: pointer to instance of \mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \\
+\hline
+{\em width} & \+: width of display \\
+\hline
+{\em height} & \+: heigth of display \\
+\hline
+{\em address} & \+: i2c address of display \\
+\hline
+{\em i2c\+\_\+instance} & \+: instance of i2c connection\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & for Success \\
+\hline
+{\em false} & if initialization failed\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em width} & \+: width of display \\
+\hline
+{\em height} & \+: heigth of display \\
+\hline
+{\em address} & \+: i2c address of display \\
+\hline
+{\em i2c\+\_\+instance} & \+: instance of i2c connection\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & for Success \\
+\hline
+{\em false} & if initialization failed \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{ssd1306_8h_a2332fdd392f3e002a5f50e3c204c0e6a}\label{ssd1306_8h_a2332fdd392f3e002a5f50e3c204c0e6a}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_invert@{ssd1306\_invert}}
+\index{ssd1306\_invert@{ssd1306\_invert}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_invert()}{ssd1306\_invert()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+invert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{inv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set invert display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em inv} & \+: inv==0\+: disable inverting, inv!=0\+: invert \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_ab6b0fb58a6636463ec76c93c05e26e02}\label{ssd1306_8h_ab6b0fb58a6636463ec76c93c05e26e02}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_poweroff@{ssd1306\_poweroff}}
+\index{ssd1306\_poweroff@{ssd1306\_poweroff}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_poweroff()}{ssd1306\_poweroff()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+poweroff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+turn off display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a19eee3288fe5dc84fc95ff3a24d50d6a}\label{ssd1306_8h_a19eee3288fe5dc84fc95ff3a24d50d6a}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_poweron@{ssd1306\_poweron}}
+\index{ssd1306\_poweron@{ssd1306\_poweron}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_poweron()}{ssd1306\_poweron()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+poweron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+turn on display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_aaefa7a41dc6dafe032eefc5b448e8137}\label{ssd1306_8h_aaefa7a41dc6dafe032eefc5b448e8137}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_reset@{ssd1306\_reset}}
+\index{ssd1306\_reset@{ssd1306\_reset}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_reset()}{ssd1306\_reset()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+reset display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_a5f7f4e389880f412318683f62cebeb2c}\label{ssd1306_8h_a5f7f4e389880f412318683f62cebeb2c}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_rotate@{ssd1306\_rotate}}
+\index{ssd1306\_rotate@{ssd1306\_rotate}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_rotate()}{ssd1306\_rotate()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Outdated\+: set hardware rotation of display to 180° 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em val} & \+: val==0\+: disable rotation, val!=0\+: rotate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Included for backwards support. Use ssd1306\+\_\+set\+\_\+rotation instead 
+\end{DoxyNote}
+\mbox{\Hypertarget{ssd1306_8h_a2ccda198959aea3da9459d1cb38c8c26}\label{ssd1306_8h_a2ccda198959aea3da9459d1cb38c8c26}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_set\_rotation@{ssd1306\_set\_rotation}}
+\index{ssd1306\_set\_rotation@{ssd1306\_set\_rotation}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_set\_rotation()}{ssd1306\_set\_rotation()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+set\+\_\+rotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set display rotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em rotation} & \+: 0\+: no rotation, 1\+: 90°, 2\+: 180°, 3\+: 270° \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_afc04cfe30a15dfd3cc0b55ae2a2f57af}\label{ssd1306_8h_afc04cfe30a15dfd3cc0b55ae2a2f57af}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_show@{ssd1306\_show}}
+\index{ssd1306\_show@{ssd1306\_show}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_show()}{ssd1306\_show()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+show (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+display buffer, should be called on change 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8h_ac6a2f7faaf517e96cff3c47d8986144d}\label{ssd1306_8h_ac6a2f7faaf517e96cff3c47d8986144d}} 
+\index{ssd1306.h@{ssd1306.h}!ssd1306\_vflip@{ssd1306\_vflip}}
+\index{ssd1306\_vflip@{ssd1306\_vflip}!ssd1306.h@{ssd1306.h}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_vflip()}{ssd1306\_vflip()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+vflip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint8\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set vertical flip of display 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em val} & \+: val==0\+: disable flip, val!=0\+: flip \\
+\hline
+\end{DoxyParams}

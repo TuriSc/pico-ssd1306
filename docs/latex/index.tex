@@ -1,0 +1,55 @@
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+Simple library for using ssd1306 displays with the Raspberry Pi Pico and the pico-\/sdk. Fork of \href{https://github.com/daschr/pico-ssd1306/}{\texttt{ daschr/pico-\/ssd1306}}, adding support for screen rotation.\hypertarget{index_autotoc_md1}{}\doxysection{Usage}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item copy {\ttfamily \mbox{\hyperlink{font_8h_source}{font.\+h}}}, {\ttfamily \mbox{\hyperlink{ssd1306_8c}{ssd1306.\+c}}} and {\ttfamily \mbox{\hyperlink{ssd1306_8h}{ssd1306.\+h}}} to your project
+\item see example
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{Documentation}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item online \href{https://daschr.github.io/pico-ssd1306/}{\texttt{ documentation}}
+\item see {\ttfamily \mbox{\hyperlink{ssd1306_8h}{ssd1306.\+h}}} and example
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{Example}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item set {\ttfamily PICO\+\_\+\+SDK\+\_\+\+PATH}
+\item goto {\ttfamily example}
+\item {\ttfamily mkdir build \&\& cd build \&\& cmake .. \&\& make}
+\item copy the {\ttfamily ssd1306-\/example.\+uf2} to your Pico
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{Draw Images}\label{index_autotoc_md4}
+The library can draw monochrome bitmaps using the functions \href{https://daschr.github.io/pico-ssd1306/ssd1306_8h.html\#a89d1f4edb34d5860df01a62512cc3949}{\texttt{ {\itshape ssd1306\+\_\+bmp\+\_\+show\+\_\+image}}} and \href{https://daschr.github.io/pico-ssd1306/ssd1306_8h.html\#a1624a5ea20392d5614b84094e94160b0}{\texttt{ {\itshape ssd1306\+\_\+bmp\+\_\+show\+\_\+image\+\_\+with\+\_\+offset}}}.
+
+For converting an image to the supported format, you can do the following\+:
+
+
+\begin{DoxyItemize}
+\item install \href{https://imagemagick.org/}{\texttt{ Image\+Magick}}
+\item use {\ttfamily convert you\+\_\+image.\+png -\/monochrome your\+\_\+image.\+bmp}
+\end{DoxyItemize}
+
+For embedding your image, you can use tools like {\itshape bin2c} (included in the {\itshape hxtools} package on Debian).
+
+Alternatively, you can you the version included in this repo\+:
+
+
+\begin{DoxyItemize}
+\item go in the {\itshape tools/} directory
+\item {\ttfamily make}
+\item usage\+: {\ttfamily ./bin2c your\+\_\+image.\+bmp your\+\_\+image.\+h}
+\end{DoxyItemize}
+
+You may also take a look at the example in the {\itshape example/} directory.\hypertarget{index_autotoc_md5}{}\doxysection{Fonts}\label{index_autotoc_md5}
+You can also use or own fonts when drawing with {\itshape ssd1306\+\_\+draw\+\_\+char\+\_\+with\+\_\+font} or {\itshape ssd1306\+\_\+draw\+\_\+string\+\_\+with\+\_\+font}. The format is\+:
+\begin{DoxyEnumerate}
+\item a 1-\/D uint8\+\_\+t array
+\item structure of the array\+:
+\begin{DoxyEnumerate}
+\item the first element of the array is the {\itshape height}
+\item the second element of the array is the {\itshape width}
+\item the third element of the array is the {\itshape additional spacing between chars}
+\item the fourth element of the array is the {\itshape the first ascii character, this array stores}
+\item the fifth element of the array is the {\itshape the last ascii character, this array stores}
+\item the following elements encode the pixels of the characters vertically line by line (\href{https://jared.geek.nz/2014/jan/custom-fonts-for-microcontrollers\#drawing-fonts}{\texttt{ see}}); a line can be encoded as more than one {\ttfamily uint8\+\_\+t} values, when the {\itshape height} is greater than 8; please look at {\ttfamily \mbox{\hyperlink{font_8h_source}{font.\+h}}} and the fonts in the {\ttfamily example/} directory 
+\end{DoxyEnumerate}
+\end{DoxyEnumerate}
