@@ -272,6 +272,18 @@ void ssd1306_bmp_show_image_with_offset(ssd1306_t *p, const uint8_t *data, const
 void ssd1306_bmp_show_image(ssd1306_t *p, const uint8_t *data, const long size);
 
 /**
+	@brief clear char with given font
+
+	@param p : instance of display
+	@param x : x starting position of char
+	@param y : y starting position of char
+	@param scale : scale font to n times of original size (default should be 1)
+	@param font : pointer to font
+	@param c : character to clear
+*/
+void ssd1306_clear_char_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, char c);
+
+/**
 	@brief draw char with given font
 
 	@param p : instance of display
@@ -282,6 +294,17 @@ void ssd1306_bmp_show_image(ssd1306_t *p, const uint8_t *data, const long size);
 	@param c : character to draw
 */
 void ssd1306_draw_char_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, char c);
+
+/**
+	@brief clear char with builtin font
+
+	@param p : instance of display
+	@param x : x starting position of char
+	@param y : y starting position of char
+	@param scale : scale font to n times of original size (default should be 1)
+	@param c : character to clear
+*/
+void ssd1306_clear_char(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, char c);
 
 /**
 	@brief draw char with builtin font
@@ -295,6 +318,18 @@ void ssd1306_draw_char_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t 
 void ssd1306_draw_char(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, char c);
 
 /**
+	@brief clear string with given font
+
+	@param p : instance of display
+	@param x : x starting position of text
+	@param y : y starting position of text
+	@param scale : scale font to n times of original size (default should be 1)
+	@param font : pointer to font
+	@param s : text to clear
+*/
+void ssd1306_clear_string_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, const char *s);
+
+/**
 	@brief draw string with given font
 
 	@param p : instance of display
@@ -305,6 +340,17 @@ void ssd1306_draw_char(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, cha
 	@param s : text to draw
 */
 void ssd1306_draw_string_with_font(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const uint8_t *font, const char *s );
+
+/**
+	@brief clear string with builtin font
+
+	@param p : instance of display
+	@param x : x starting position of text
+	@param y : y starting position of text
+	@param scale : scale font to n times of original size (default should be 1)
+	@param s : text to clear
+*/
+void ssd1306_clear_string(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t scale, const char *s);
 
 /**
 	@brief draw string with builtin font
