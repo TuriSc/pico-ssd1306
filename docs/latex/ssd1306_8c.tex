@@ -13,8 +13,7 @@ SSD1306 OLED display driver.
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}ssd1306.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}font.\+h\char`\"{}}\newline
-Include dependency graph for ssd1306.\+c\+:
-\nopagebreak
+Include dependency graph for ssd1306.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -64,6 +63,8 @@ void \mbox{\hyperlink{ssd1306_8c_a5cefac323181b2b693df9e6f043e88c6}{ssd1306\+\_\
 \begin{DoxyCompactList}\small\item\em clear filled circle at given position with given radius \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{ssd1306_8c_a6610dd3b44dfb21466e4c1db173c4b8c}{ssd1306\+\_\+draw\+\_\+circle}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t r)
 \begin{DoxyCompactList}\small\item\em draw filled circle at given position with given radius \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ssd1306_8c_afea11f9832143092fe527ce3e49d39bd}{ssd1306\+\_\+draw\+\_\+empty\+\_\+circle}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t r)
+\begin{DoxyCompactList}\small\item\em draw empty circle at given position with given radius \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{ssd1306_8c_aacdc1699e00e5649149ccf525d84ed26}{ssd1306\+\_\+clear\+\_\+char\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, char c)
 \begin{DoxyCompactList}\small\item\em clear char with given font \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{ssd1306_8c_a48309e637d7621f73446b37d8728e085}{ssd1306\+\_\+draw\+\_\+char\+\_\+with\+\_\+font}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$p, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t scale, const uint8\+\_\+t $\ast$font, char c)
@@ -405,6 +406,27 @@ draw char with given font
 
 
 draw filled circle at given position with given radius 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \+: instance of display \\
+\hline
+{\em x} & \+: x position of the center of the circle \\
+\hline
+{\em y} & \+: y position of the center of the circle \\
+\hline
+{\em r} & \+: radius of the circle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ssd1306_8c_afea11f9832143092fe527ce3e49d39bd}\label{ssd1306_8c_afea11f9832143092fe527ce3e49d39bd}} 
+\index{ssd1306.c@{ssd1306.c}!ssd1306\_draw\_empty\_circle@{ssd1306\_draw\_empty\_circle}}
+\index{ssd1306\_draw\_empty\_circle@{ssd1306\_draw\_empty\_circle}!ssd1306.c@{ssd1306.c}}
+\doxysubsubsection{\texorpdfstring{ssd1306\_draw\_empty\_circle()}{ssd1306\_draw\_empty\_circle()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+draw\+\_\+empty\+\_\+circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{p,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{r }\end{DoxyParamCaption})}
+
+
+
+draw empty circle at given position with given radius 
 
 
 \begin{DoxyParams}{Parameters}
