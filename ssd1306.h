@@ -252,6 +252,16 @@ void ssd1306_clear_circle(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t r);
 void ssd1306_draw_circle(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t r);
 
 /**
+	@brief draw empty circle at given position with given radius
+
+	@param p : instance of display
+	@param x : x position of the center of the circle
+	@param y : y position of the center of the circle
+	@param r : radius of the circle
+*/
+void ssd1306_draw_empty_circle(ssd1306_t *p, uint32_t x, uint32_t y, uint32_t r);
+
+/**
 	@brief draw monochrome bitmap with offset
 
 	@param p : instance of display
